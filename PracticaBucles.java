@@ -31,8 +31,45 @@ public class PracticaBucles {
      *   Utiliza solo bucles while
      */
     public void generarNumeros(int n)   {
-       //TODO
-
+        int suma = 0;
+        int sumai = 0;
+        int max = Integer.MIN_VALUE;
+        
+        System.out.println("Nº maximo de aleatorios a generar: " + n + "\no hasta que salga 0");
+        int i = 0;
+        
+        // se puede hacer con un for
+        
+        while (i < n){ 
+            int r = generador.nextInt(6001)-1000;
+            if (r == 0){
+                break;
+            }
+            
+            suma += r;
+            if (esImpar(r)){
+                sumai += r;
+            }
+            if (!esImpar(r)){
+                if(r > max){
+                    max = r;
+                }
+            }
+            
+            if (i % 5 == 0){
+                System.out.println("");
+            }
+            System.out.printf("%15s", r); // No se porque habria que poner el numero y los ":" 
+                                          // asi que no los he puesto
+            i++;
+            }
+        
+        System.out.println("");
+        System.out.println("");
+        System.out.printf("%20s%10s\n","Media: ",suma/n);
+        System.out.printf("%20s%10s\n","Suma Impares: ",sumai);
+        System.out.printf("%20s%10s\n","Maximo pares: ",max);
+        
     }
 
     /**
@@ -40,7 +77,9 @@ public class PracticaBucles {
      *  Hazlo sin utilizar if
      */
     public boolean esImpar(int numero)   {
-        //TODO
+        while (numero % 2 != 0){
+            return true;
+        }
         
         
         return  false;
@@ -56,10 +95,17 @@ public class PracticaBucles {
      *   
      */
     public int obtenerNumeroSinCeros(int numero)   {
-        //TODO
-        
-        
-        return 0;
+        int sin0 = 0;
+        int multi = 1;
+        while (numero > 0){
+            int cifra = numero % 10;
+            numero /= 10;
+            if(cifra != 0){
+                sin0 += multi * cifra;
+                multi *= 10;
+            }  
+        }   
+        return sin0;
     }
 
     /**
@@ -81,20 +127,32 @@ public class PracticaBucles {
      *   
      */
     public void escribirLetraN(int altura)    {
-       //TODO
-
+        System.out.println("Letra: N - Altura: " + altura);
+        escribirCaracter(CARACTER, altura);
+        
     }
 
     /**
      *  escribe n veces el caracter  indicado en la misma línea
      *  con bucles for
      */
-    private void escribirCaracter(char caracter, int n)    {
-       //TODO
-       
-       
-       
-       
+    public void escribirCaracter(char caracter, int n)    {
+        String linea = "";
+        for (int i = 0; i < n; i++){
+            linea += caracter;
+            
+            for (int j = 0; j < i; j++){
+                linea += ESPACIO;
+            }
+            linea += caracter;
+            
+            int cont = n - i ;
+            for (int k = cont; k > 1; k--){
+                linea += ESPACIO;
+            }
+            linea += caracter + "\n";
+        }
+        System.out.println(linea);
     }
 
 }
