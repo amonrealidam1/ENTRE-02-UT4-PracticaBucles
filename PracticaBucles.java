@@ -1,6 +1,6 @@
 import java.util.Random;
 /**
- *    
+ *    Aimar Monreal
  */
 public class PracticaBucles {
     private final char ESPACIO = ' ';
@@ -31,9 +31,9 @@ public class PracticaBucles {
      *   Utiliza solo bucles while
      */
     public void generarNumeros(int n)   {
-        int suma = 0;
+        float suma = 0;
         int sumai = 0;
-        int max = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE; 
         
         System.out.println("Nº maximo de aleatorios a generar: " + n + "\no hasta que salga 0");
         int i = 0;
@@ -47,28 +47,31 @@ public class PracticaBucles {
             }
             
             suma += r;
+            
             if (esImpar(r)){
                 sumai += r;
             }
-            if (!esImpar(r)){
-                if(r > max){
-                    max = r;
-                }
+            else if (r > max){
+                max = r;
             }
             
+            // Saltar a nueva linea cada 5 numeros
             if (i % 5 == 0){
                 System.out.println("");
             }
-            System.out.printf("%15s", r); // No se porque habria que poner el numero y los ":" 
-                                          // asi que no los he puesto
+            System.out.printf("%20s", r + ": " + r); 
+            // porque hay que poner el numero 2 veces y los ":" ???
+    
             i++;
             }
         
         System.out.println("");
         System.out.println("");
-        System.out.printf("%20s%10s\n","Media: ",suma/n);
-        System.out.printf("%20s%10s\n","Suma Impares: ",sumai);
-        System.out.printf("%20s%10s\n","Maximo pares: ",max);
+        System.out.printf("%25s%10.2f\n","Media: ",suma/n);
+        System.out.printf("%25s%10s\n","Suma Impares: ",sumai);
+        System.out.printf("%25s%10s\n","Maximo pares: ",max); 
+        // en la suma de impares y en maximo de los pares la aparicion de 
+        // decimales no es posible
         
     }
 
@@ -79,9 +82,7 @@ public class PracticaBucles {
     public boolean esImpar(int numero)   {
         while (numero % 2 != 0){
             return true;
-        }
-        
-        
+        }   
         return  false;
     }
 
@@ -136,7 +137,7 @@ public class PracticaBucles {
      *  escribe n veces el caracter  indicado en la misma línea
      *  con bucles for
      */
-    public void escribirCaracter(char caracter, int n)    {
+    private void escribirCaracter(char caracter, int n)    {
         String linea = "";
         for (int i = 0; i < n; i++){
             linea += caracter;
@@ -146,11 +147,11 @@ public class PracticaBucles {
             }
             linea += caracter;
             
-            int cont = n - i ;
-            for (int k = cont; k > 1; k--){
+            for (int k = n - i; k > 1; k--){
                 linea += ESPACIO;
             }
             linea += caracter + "\n";
+            
         }
         System.out.println(linea);
     }
