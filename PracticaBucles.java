@@ -41,7 +41,8 @@ public class PracticaBucles {
         // se puede hacer con un for
         
         while (i < n){ 
-            int r = generador.nextInt(6001)-1000;
+            int r = generador.nextInt(6001)-1000; //en el pdf dice entre -1000 y 50000
+                                                  //pero en los comentarios de encima 5000 max
             if (r == 0){
                 break;
             }
@@ -93,7 +94,7 @@ public class PracticaBucles {
      *  Ej - si numero = 2040 devuelve  24, si numero = 1009 devuelve  19
      *  si numero = 3000 devuelve 3
      *   
-     *   
+     *  
      */
     public int obtenerNumeroSinCeros(int numero)   {
         int sin0 = 0;
@@ -106,6 +107,7 @@ public class PracticaBucles {
                 multi *= 10;
             }  
         }   
+        // al meter un 0 devuelve 0
         return sin0;
     }
 
